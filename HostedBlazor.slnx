@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="HostedBlazor.Client/HostedBlazor.Client.csproj" Id="b199053f-c2c4-4ee9-a2d1-31edbc362242" />
+  <Project Path="HostedBlazor.Server/HostedBlazor.Server.csproj" Id="0d65fde3-93f9-43a1-9173-2f5c0398a769" />
+  <Project Path="HostedBlazor.Shared/HostedBlazor.Shared.csproj" Id="227369a4-0799-4e72-a70c-decbb26a1699" />
+</Solution>
