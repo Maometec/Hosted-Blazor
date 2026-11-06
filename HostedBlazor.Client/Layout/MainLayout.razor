@@ -1,16 +1,31 @@
 ﻿@inherits LayoutComponentBase
+
 <div class="page">
-    <div class="sidebar">
+    <aside class="w-auto">
         <NavMenu />
-    </div>
+    </aside>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+        <header class="navbar navbar-expand-lg sticky-top border-bottom bg-body-tertiary">
+            <div class="container-fluid gap-3 px-4">
+                <button class="navbar-toggler border border-0 shadow-none p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <span class="navbar-brand h1 mb-0"></span>
+                <div class="d-flex gap-3">
+                    <div class="dropdown">
+                        <button class="btn border-0 shadow-none p-1 show" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical fs-5 align-middle mx-auto"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="content px-4">
             @Body
-        </article>
+        </section>
     </main>
 </div>
