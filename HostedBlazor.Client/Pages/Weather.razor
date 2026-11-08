@@ -2,9 +2,7 @@
 
 @using HostedBlazor.Shared.Models
 
-<PageTitle>Weather</PageTitle>
-
-<h1>Weather</h1>
+<PageTitle>@title | Hosted Blazor</PageTitle>
 
 <p>This component demonstrates fetching data from the server.</p>
 
@@ -41,9 +39,14 @@ else
     [Inject]
     private HttpClient Http { get; set; } = null!;
     private WeatherForecast[]? forecasts;
+    private string title = "Weather";
+
+    [CascadingParameter]
+    public EventCallback<string> OnLoaded { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        await OnLoaded.InvokeAsync(title);
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("api/WeatherForecast");
     }
 }

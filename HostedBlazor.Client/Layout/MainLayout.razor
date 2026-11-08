@@ -11,7 +11,7 @@
                 <button class="navbar-toggler border border-0 shadow-none p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <span class="navbar-brand h1 mb-0"></span>
+                <span class="navbar-brand h1 mb-0">@title</span>
                 <div class="d-flex gap-3">
                     <div class="dropdown">
                         <button class="btn border-0 shadow-none p-1 show" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,20 @@
             </div>
         </header>
         <section class="content px-4">
-            @Body
+            <CascadingValue Value="OnPageLoaded">
+                @Body
+            </CascadingValue>
         </section>
     </main>
 </div>
+
+@code {
+    private string? title = "Application";
+
+    private EventCallback<string> OnPageLoaded => EventCallback.Factory.Create(this, (Action<string>)SetTitle);
+
+    private void SetTitle(string title)
+    {
+        this.title = title;
+    }
+}

@@ -1,15 +1,22 @@
 ﻿@page "/counter"
 
-<PageTitle>Counter</PageTitle>
-
-<h1>Counter</h1>
+<PageTitle>@title | Hosted Blazor</PageTitle>
 
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
+    [CascadingParameter]
+    public EventCallback<string> OnLoaded { get; set; }
+
+    private string title = "Counter";
     private int currentCount = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnLoaded.InvokeAsync(title);
+    }
 
     private void IncrementCount()
     {

@@ -1,7 +1,19 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>@title | Hosted Blazor</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@code {
+    [CascadingParameter]
+    public EventCallback<string> OnLoaded { get; set; }
+
+    private string title = "Home";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnLoaded.InvokeAsync(title);
+    }
+}
